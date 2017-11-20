@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D560193E-5CE1-4F67-BA5F-F707DDF8AFAD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SVM_Suite</RootNamespace>
+    <AssemblyName>SVM_Suite</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.3.0\lib\net45\Google.Protobuf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SVM_Contracts\bin\Debug\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Fabric.Plugin, Version=7.0.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Fabric.7.0.4-IR19\lib\net451\MySql.Fabric.Plugin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SVM_Contracts, Version=1.1.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SVM_Contracts\bin\Debug\SVM_Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="SVM_Logic">
+      <HintPath>..\SVM_Logic\bin\Debug\SVM_Logic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SVM_Processor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SVM_Processor\bin\Debug\SVM_Processor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDiscountMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDiscountMaintenance.Designer.cs">
+      <DependentUpon>FrmDiscountMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDueDateMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDueDateMaintenance.Designer.cs">
+      <DependentUpon>FrmDueDateMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPaymentListing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPaymentListing.Designer.cs">
+      <DependentUpon>FrmPaymentListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPaymentMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPaymentMaintenance.Designer.cs">
+      <DependentUpon>FrmPaymentMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmReportAssessment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReportAssessment.Designer.cs">
+      <DependentUpon>FrmReportAssessment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVendorListing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVendorListing.Designer.cs">
+      <DependentUpon>FrmVendorListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAssessment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAssessment.Designer.cs">
+      <DependentUpon>FrmAssessment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSections.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSections.Designer.cs">
+      <DependentUpon>FrmSections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStudentInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStudentInformation.Designer.cs">
+      <DependentUpon>FrmStudentInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStudentListing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStudentListing.Designer.cs">
+      <DependentUpon>FrmStudentListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTuitionMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTuitionMaintenance.Designer.cs">
+      <DependentUpon>FrmTuitionMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserAccessMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserAccessMaintenance.Designer.cs">
+      <DependentUpon>FrmUserAccessMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserListing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserListing.Designer.cs">
+      <DependentUpon>FrmUserListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserMaintenance.Designer.cs">
+      <DependentUpon>FrmUserMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVendorMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVendorMaintenance.Designer.cs">
+      <DependentUpon>FrmVendorMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
+    <Compile Include="Parent_SVM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Parent_SVM.Designer.cs">
+      <DependentUpon>Parent_SVM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="FrmDiscountMaintenance.resx">
+      <DependentUpon>FrmDiscountMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDueDateMaintenance.resx">
+      <DependentUpon>FrmDueDateMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPaymentListing.resx">
+      <DependentUpon>FrmPaymentListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPaymentMaintenance.resx">
+      <DependentUpon>FrmPaymentMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReportAssessment.resx">
+      <DependentUpon>FrmReportAssessment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVendorListing.resx">
+      <DependentUpon>FrmVendorListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAssessment.resx">
+      <DependentUpon>FrmAssessment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSections.resx">
+      <DependentUpon>FrmSections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStudentInformation.resx">
+      <DependentUpon>FrmStudentInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStudentListing.resx">
+      <DependentUpon>FrmStudentListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTuitionMaintenance.resx">
+      <DependentUpon>FrmTuitionMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserAccessMaintenance.resx">
+      <DependentUpon>FrmUserAccessMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserListing.resx">
+      <DependentUpon>FrmUserListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserMaintenance.resx">
+      <DependentUpon>FrmUserMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVendorMaintenance.resx">
+      <DependentUpon>FrmVendorMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Parent_SVM.resx">
+      <DependentUpon>Parent_SVM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IMG_0602.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(SQLDBExtensionsRefPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(SQLDBExtensionsRefPath)' == ''" />
+  <PropertyGroup>
+    <SsdtUnitTestVersion>2.0</SsdtUnitTestVersion>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

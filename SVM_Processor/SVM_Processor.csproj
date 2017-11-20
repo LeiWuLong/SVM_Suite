@@ -1,0 +1,635 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{902C56CF-DE1B-4197-8F75-151CB5FB32B1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SVM_Processor</RootNamespace>
+    <AssemblyName>SVM_Processor</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.3.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.3.0\lib\net45\Google.Protobuf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=7.0.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\SVM_Suite_old\SVM_Suite_1\SVM_Suite\bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Fabric.Plugin, Version=7.0.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Fabric.7.0.4-IR19\lib\net451\MySql.Fabric.Plugin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTO\AssessmentDTO.cs" />
+    <Compile Include="DTO\PaymentsDTO.cs" />
+    <Compile Include="DTO\StudentListingDTO.cs" />
+    <Compile Include="DTO\TuitionDTO.cs" />
+    <Compile Include="DTO\UserListingDTO.cs" />
+    <Compile Include="DTO\VendorListingDTO.cs" />
+    <Compile Include="Migrations\201707092327419_studentno.cs" />
+    <Compile Include="Migrations\201707092327419_studentno.Designer.cs">
+      <DependentUpon>201707092327419_studentno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707130440549_yearenrolled.cs" />
+    <Compile Include="Migrations\201707130440549_yearenrolled.Designer.cs">
+      <DependentUpon>201707130440549_yearenrolled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707302252308_empnotostr.cs" />
+    <Compile Include="Migrations\201707302252308_empnotostr.Designer.cs">
+      <DependentUpon>201707302252308_empnotostr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708081757512_robby.cs" />
+    <Compile Include="Migrations\201708081757512_robby.Designer.cs">
+      <DependentUpon>201708081757512_robby.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708101443335_floattodoubletuition.cs" />
+    <Compile Include="Migrations\201708101443335_floattodoubletuition.Designer.cs">
+      <DependentUpon>201708101443335_floattodoubletuition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708101513211_paymetterm.cs" />
+    <Compile Include="Migrations\201708101513211_paymetterm.Designer.cs">
+      <DependentUpon>201708101513211_paymetterm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708120911330_dimenrollment.cs" />
+    <Compile Include="Migrations\201708120911330_dimenrollment.Designer.cs">
+      <DependentUpon>201708120911330_dimenrollment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708121122473_dimenrollmentcode.cs" />
+    <Compile Include="Migrations\201708121122473_dimenrollmentcode.Designer.cs">
+      <DependentUpon>201708121122473_dimenrollmentcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708121131080_dimenrollmentfk.cs" />
+    <Compile Include="Migrations\201708121131080_dimenrollmentfk.Designer.cs">
+      <DependentUpon>201708121131080_dimenrollmentfk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708121651300_tuitmisc.cs" />
+    <Compile Include="Migrations\201708121651300_tuitmisc.Designer.cs">
+      <DependentUpon>201708121651300_tuitmisc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708121841517_tbltuition.cs" />
+    <Compile Include="Migrations\201708121841517_tbltuition.Designer.cs">
+      <DependentUpon>201708121841517_tbltuition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708140433250_assessment_and_dims.cs" />
+    <Compile Include="Migrations\201708140433250_assessment_and_dims.Designer.cs">
+      <DependentUpon>201708140433250_assessment_and_dims.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708140438238_apply_assessmentanddim.cs" />
+    <Compile Include="Migrations\201708140438238_apply_assessmentanddim.Designer.cs">
+      <DependentUpon>201708140438238_apply_assessmentanddim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708140443506_AYFromTo.cs" />
+    <Compile Include="Migrations\201708140443506_AYFromTo.Designer.cs">
+      <DependentUpon>201708140443506_AYFromTo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708140501037_assessmentstatus.cs" />
+    <Compile Include="Migrations\201708140501037_assessmentstatus.Designer.cs">
+      <DependentUpon>201708140501037_assessmentstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708140505556_assessmentstatus2.cs" />
+    <Compile Include="Migrations\201708140505556_assessmentstatus2.Designer.cs">
+      <DependentUpon>201708140505556_assessmentstatus2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708140521478_nulldatetime.cs" />
+    <Compile Include="Migrations\201708140521478_nulldatetime.Designer.cs">
+      <DependentUpon>201708140521478_nulldatetime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708141544460_editassessment.cs" />
+    <Compile Include="Migrations\201708141544460_editassessment.Designer.cs">
+      <DependentUpon>201708141544460_editassessment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708141633119_robby1.cs" />
+    <Compile Include="Migrations\201708141633119_robby1.Designer.cs">
+      <DependentUpon>201708141633119_robby1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708160511220_removenullable.cs" />
+    <Compile Include="Migrations\201708160511220_removenullable.Designer.cs">
+      <DependentUpon>201708160511220_removenullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708171502353_tblvendor.cs" />
+    <Compile Include="Migrations\201708171502353_tblvendor.Designer.cs">
+      <DependentUpon>201708171502353_tblvendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181930511_buzzbeat.cs" />
+    <Compile Include="Migrations\201708181930511_buzzbeat.Designer.cs">
+      <DependentUpon>201708181930511_buzzbeat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708181932596_buzzbeat2.cs" />
+    <Compile Include="Migrations\201708181932596_buzzbeat2.Designer.cs">
+      <DependentUpon>201708181932596_buzzbeat2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708182313500_tired.cs" />
+    <Compile Include="Migrations\201708182313500_tired.Designer.cs">
+      <DependentUpon>201708182313500_tired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708182319592_tired2.cs" />
+    <Compile Include="Migrations\201708182319592_tired2.Designer.cs">
+      <DependentUpon>201708182319592_tired2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709081225433_discount.cs" />
+    <Compile Include="Migrations\201709081225433_discount.Designer.cs">
+      <DependentUpon>201709081225433_discount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709081228221_discount2.cs" />
+    <Compile Include="Migrations\201709081228221_discount2.Designer.cs">
+      <DependentUpon>201709081228221_discount2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709200506155_siblingreferral.cs" />
+    <Compile Include="Migrations\201709200506155_siblingreferral.Designer.cs">
+      <DependentUpon>201709200506155_siblingreferral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250554525_honors.cs" />
+    <Compile Include="Migrations\201709250554525_honors.Designer.cs">
+      <DependentUpon>201709250554525_honors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709250621205_honorsrevise.cs" />
+    <Compile Include="Migrations\201709250621205_honorsrevise.Designer.cs">
+      <DependentUpon>201709250621205_honorsrevise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710020505265_discounttables.cs" />
+    <Compile Include="Migrations\201710020505265_discounttables.Designer.cs">
+      <DependentUpon>201710020505265_discounttables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710020522404_discounttables2.cs" />
+    <Compile Include="Migrations\201710020522404_discounttables2.Designer.cs">
+      <DependentUpon>201710020522404_discounttables2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710100856031_discounts2.cs" />
+    <Compile Include="Migrations\201710100856031_discounts2.Designer.cs">
+      <DependentUpon>201710100856031_discounts2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710101015509_discounts3.cs" />
+    <Compile Include="Migrations\201710101015509_discounts3.Designer.cs">
+      <DependentUpon>201710101015509_discounts3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710101037338_discounts4.cs" />
+    <Compile Include="Migrations\201710101037338_discounts4.Designer.cs">
+      <DependentUpon>201710101037338_discounts4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710170543336_robpaymentsinteg.cs" />
+    <Compile Include="Migrations\201710170543336_robpaymentsinteg.Designer.cs">
+      <DependentUpon>201710170543336_robpaymentsinteg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710180440003_paymentslist.cs" />
+    <Compile Include="Migrations\201710180440003_paymentslist.Designer.cs">
+      <DependentUpon>201710180440003_paymentslist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710181525236_balance.cs" />
+    <Compile Include="Migrations\201710181525236_balance.Designer.cs">
+      <DependentUpon>201710181525236_balance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710181624492_balance2.cs" />
+    <Compile Include="Migrations\201710181624492_balance2.Designer.cs">
+      <DependentUpon>201710181624492_balance2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710190523545_AY.cs" />
+    <Compile Include="Migrations\201710190523545_AY.Designer.cs">
+      <DependentUpon>201710190523545_AY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710190604173_datesparameter2.cs" />
+    <Compile Include="Migrations\201710190604173_datesparameter2.Designer.cs">
+      <DependentUpon>201710190604173_datesparameter2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710200210202_gradings.cs" />
+    <Compile Include="Migrations\201710200210202_gradings.Designer.cs">
+      <DependentUpon>201710200210202_gradings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710200309591_schoolyearparam.cs" />
+    <Compile Include="Migrations\201710200309591_schoolyearparam.Designer.cs">
+      <DependentUpon>201710200309591_schoolyearparam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710200332359_spelling.cs" />
+    <Compile Include="Migrations\201710200332359_spelling.Designer.cs">
+      <DependentUpon>201710200332359_spelling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710201034257_renamelevelid.cs" />
+    <Compile Include="Migrations\201710201034257_renamelevelid.Designer.cs">
+      <DependentUpon>201710201034257_renamelevelid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710210447106_updatepaymentsdto.cs" />
+    <Compile Include="Migrations\201710210447106_updatepaymentsdto.Designer.cs">
+      <DependentUpon>201710210447106_updatepaymentsdto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710241524059_paths.cs" />
+    <Compile Include="Migrations\201710241524059_paths.Designer.cs">
+      <DependentUpon>201710241524059_paths.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710251033348_assessment.cs" />
+    <Compile Include="Migrations\201710251033348_assessment.Designer.cs">
+      <DependentUpon>201710251033348_assessment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710251704008_dimmiscid.cs" />
+    <Compile Include="Migrations\201710251704008_dimmiscid.Designer.cs">
+      <DependentUpon>201710251704008_dimmiscid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710251705533_dimmiscid2.cs" />
+    <Compile Include="Migrations\201710251705533_dimmiscid2.Designer.cs">
+      <DependentUpon>201710251705533_dimmiscid2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710270630167_changenametbltuition.cs" />
+    <Compile Include="Migrations\201710270630167_changenametbltuition.Designer.cs">
+      <DependentUpon>201710270630167_changenametbltuition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710291345364_decimaltodouble.cs" />
+    <Compile Include="Migrations\201710291345364_decimaltodouble.Designer.cs">
+      <DependentUpon>201710291345364_decimaltodouble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711011548349_assessmentrevised.cs" />
+    <Compile Include="Migrations\201711011548349_assessmentrevised.Designer.cs">
+      <DependentUpon>201711011548349_assessmentrevised.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711020226486_updatesiblingmap.cs" />
+    <Compile Include="Migrations\201711020226486_updatesiblingmap.Designer.cs">
+      <DependentUpon>201711020226486_updatesiblingmap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711020446008_isalumni.cs" />
+    <Compile Include="Migrations\201711020446008_isalumni.Designer.cs">
+      <DependentUpon>201711020446008_isalumni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711021329250_renamereferral.cs" />
+    <Compile Include="Migrations\201711021329250_renamereferral.Designer.cs">
+      <DependentUpon>201711021329250_renamereferral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711021423325_updateAssessment.cs" />
+    <Compile Include="Migrations\201711021423325_updateAssessment.Designer.cs">
+      <DependentUpon>201711021423325_updateAssessment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711030723247_ispromissory.cs" />
+    <Compile Include="Migrations\201711030723247_ispromissory.Designer.cs">
+      <DependentUpon>201711030723247_ispromissory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711030744287_isTransferee.cs" />
+    <Compile Include="Migrations\201711030744287_isTransferee.Designer.cs">
+      <DependentUpon>201711030744287_isTransferee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711031207006_assessmentmis.cs" />
+    <Compile Include="Migrations\201711031207006_assessmentmis.Designer.cs">
+      <DependentUpon>201711031207006_assessmentmis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711032204253_rushthings.cs" />
+    <Compile Include="Migrations\201711032204253_rushthings.Designer.cs">
+      <DependentUpon>201711032204253_rushthings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711141537438_ayforpayment.cs" />
+    <Compile Include="Migrations\201711141537438_ayforpayment.Designer.cs">
+      <DependentUpon>201711141537438_ayforpayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711141551016_ayassessment.cs" />
+    <Compile Include="Migrations\201711141551016_ayassessment.Designer.cs">
+      <DependentUpon>201711141551016_ayassessment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711150121104_duedates.cs" />
+    <Compile Include="Migrations\201711150121104_duedates.Designer.cs">
+      <DependentUpon>201711150121104_duedates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711150134115_duedates2.cs" />
+    <Compile Include="Migrations\201711150134115_duedates2.Designer.cs">
+      <DependentUpon>201711150134115_duedates2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711161007256_duedatedesc.cs" />
+    <Compile Include="Migrations\201711161007256_duedatedesc.Designer.cs">
+      <DependentUpon>201711161007256_duedatedesc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711191106554_penalizedfee.cs" />
+    <Compile Include="Migrations\201711191106554_penalizedfee.Designer.cs">
+      <DependentUpon>201711191106554_penalizedfee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\discounttypedetail.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\SVMContext.cs" />
+    <Compile Include="Models\tblacademicyear.cs" />
+    <Compile Include="Models\tblaccess.cs" />
+    <Compile Include="Models\tbldimalumnidiscount.cs" />
+    <Compile Include="Models\tblassessment.cs" />
+    <Compile Include="Models\tbldimbank.cs" />
+    <Compile Include="Models\tbldimassessmentstatus.cs" />
+    <Compile Include="Models\tbldimdateparameter.cs" />
+    <Compile Include="Models\tbldimenrollment.cs" />
+    <Compile Include="Models\tbldimgradingterm.cs" />
+    <Compile Include="Models\tbldimhonor.cs" />
+    <Compile Include="Models\tbldimreferrals.cs" />
+    <Compile Include="Models\tbldimschoolyearparam.cs" />
+    <Compile Include="Models\tbldimsection.cs" />
+    <Compile Include="Models\tbldimsiblings.cs" />
+    <Compile Include="Models\tbldimearlybirddiscount.cs" />
+    <Compile Include="Models\tbldimfamassistdiscount.cs" />
+    <Compile Include="Models\tbldiscount.cs" />
+    <Compile Include="Models\tbldimdiscounttype.cs" />
+    <Compile Include="Models\tbldimeducationlevel.cs" />
+    <Compile Include="Models\tblduedates.cs" />
+    <Compile Include="Models\tblgender.cs" />
+    <Compile Include="Models\tblhealthconcern.cs" />
+    <Compile Include="Models\tblmisc.cs" />
+    <Compile Include="Models\tblmodeofpayment.cs" />
+    <Compile Include="Models\tblpayment.cs" />
+    <Compile Include="Models\tblpaymentterm.cs" />
+    <Compile Include="Models\tblrelationship.cs" />
+    <Compile Include="Models\tblroles.cs" />
+    <Compile Include="Models\tbldimscholarshipdiscount.cs" />
+    <Compile Include="Models\tblschoolyear.cs" />
+    <Compile Include="Models\tblsiblingreferralmap.cs" />
+    <Compile Include="Models\tblstudent.cs" />
+    <Compile Include="Models\tblstudenteducationalbackground.cs" />
+    <Compile Include="Models\tblstudentfamily.cs" />
+    <Compile Include="Models\tblstudenthealthrecord.cs" />
+    <Compile Include="Models\tblstudentpayments.cs" />
+    <Compile Include="Models\tblterms.cs" />
+    <Compile Include="Models\tbltuition.cs" />
+    <Compile Include="Models\tbluser.cs" />
+    <Compile Include="Models\tbluseraccess.cs" />
+    <Compile Include="Models\tblvendor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707092327419_studentno.resx">
+      <DependentUpon>201707092327419_studentno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707130440549_yearenrolled.resx">
+      <DependentUpon>201707130440549_yearenrolled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707302252308_empnotostr.resx">
+      <DependentUpon>201707302252308_empnotostr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708081757512_robby.resx">
+      <DependentUpon>201708081757512_robby.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708101443335_floattodoubletuition.resx">
+      <DependentUpon>201708101443335_floattodoubletuition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708101513211_paymetterm.resx">
+      <DependentUpon>201708101513211_paymetterm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708120911330_dimenrollment.resx">
+      <DependentUpon>201708120911330_dimenrollment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708121122473_dimenrollmentcode.resx">
+      <DependentUpon>201708121122473_dimenrollmentcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708121131080_dimenrollmentfk.resx">
+      <DependentUpon>201708121131080_dimenrollmentfk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708121651300_tuitmisc.resx">
+      <DependentUpon>201708121651300_tuitmisc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708121841517_tbltuition.resx">
+      <DependentUpon>201708121841517_tbltuition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708140433250_assessment_and_dims.resx">
+      <DependentUpon>201708140433250_assessment_and_dims.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708140438238_apply_assessmentanddim.resx">
+      <DependentUpon>201708140438238_apply_assessmentanddim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708140443506_AYFromTo.resx">
+      <DependentUpon>201708140443506_AYFromTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708140501037_assessmentstatus.resx">
+      <DependentUpon>201708140501037_assessmentstatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708140505556_assessmentstatus2.resx">
+      <DependentUpon>201708140505556_assessmentstatus2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708140521478_nulldatetime.resx">
+      <DependentUpon>201708140521478_nulldatetime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708141544460_editassessment.resx">
+      <DependentUpon>201708141544460_editassessment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708141633119_robby1.resx">
+      <DependentUpon>201708141633119_robby1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708160511220_removenullable.resx">
+      <DependentUpon>201708160511220_removenullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708171502353_tblvendor.resx">
+      <DependentUpon>201708171502353_tblvendor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181930511_buzzbeat.resx">
+      <DependentUpon>201708181930511_buzzbeat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708181932596_buzzbeat2.resx">
+      <DependentUpon>201708181932596_buzzbeat2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708182313500_tired.resx">
+      <DependentUpon>201708182313500_tired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708182319592_tired2.resx">
+      <DependentUpon>201708182319592_tired2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709081225433_discount.resx">
+      <DependentUpon>201709081225433_discount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709081228221_discount2.resx">
+      <DependentUpon>201709081228221_discount2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709200506155_siblingreferral.resx">
+      <DependentUpon>201709200506155_siblingreferral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250554525_honors.resx">
+      <DependentUpon>201709250554525_honors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709250621205_honorsrevise.resx">
+      <DependentUpon>201709250621205_honorsrevise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710020505265_discounttables.resx">
+      <DependentUpon>201710020505265_discounttables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710020522404_discounttables2.resx">
+      <DependentUpon>201710020522404_discounttables2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710100856031_discounts2.resx">
+      <DependentUpon>201710100856031_discounts2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710101015509_discounts3.resx">
+      <DependentUpon>201710101015509_discounts3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710101037338_discounts4.resx">
+      <DependentUpon>201710101037338_discounts4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710170543336_robpaymentsinteg.resx">
+      <DependentUpon>201710170543336_robpaymentsinteg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710180440003_paymentslist.resx">
+      <DependentUpon>201710180440003_paymentslist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710181525236_balance.resx">
+      <DependentUpon>201710181525236_balance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710181624492_balance2.resx">
+      <DependentUpon>201710181624492_balance2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710190523545_AY.resx">
+      <DependentUpon>201710190523545_AY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710190604173_datesparameter2.resx">
+      <DependentUpon>201710190604173_datesparameter2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710200210202_gradings.resx">
+      <DependentUpon>201710200210202_gradings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710200309591_schoolyearparam.resx">
+      <DependentUpon>201710200309591_schoolyearparam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710200332359_spelling.resx">
+      <DependentUpon>201710200332359_spelling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710201034257_renamelevelid.resx">
+      <DependentUpon>201710201034257_renamelevelid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710210447106_updatepaymentsdto.resx">
+      <DependentUpon>201710210447106_updatepaymentsdto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710241524059_paths.resx">
+      <DependentUpon>201710241524059_paths.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710251033348_assessment.resx">
+      <DependentUpon>201710251033348_assessment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710251704008_dimmiscid.resx">
+      <DependentUpon>201710251704008_dimmiscid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710251705533_dimmiscid2.resx">
+      <DependentUpon>201710251705533_dimmiscid2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710270630167_changenametbltuition.resx">
+      <DependentUpon>201710270630167_changenametbltuition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710291345364_decimaltodouble.resx">
+      <DependentUpon>201710291345364_decimaltodouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711011548349_assessmentrevised.resx">
+      <DependentUpon>201711011548349_assessmentrevised.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711020226486_updatesiblingmap.resx">
+      <DependentUpon>201711020226486_updatesiblingmap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711020446008_isalumni.resx">
+      <DependentUpon>201711020446008_isalumni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711021329250_renamereferral.resx">
+      <DependentUpon>201711021329250_renamereferral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711021423325_updateAssessment.resx">
+      <DependentUpon>201711021423325_updateAssessment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711030723247_ispromissory.resx">
+      <DependentUpon>201711030723247_ispromissory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711030744287_isTransferee.resx">
+      <DependentUpon>201711030744287_isTransferee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711031207006_assessmentmis.resx">
+      <DependentUpon>201711031207006_assessmentmis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711032204253_rushthings.resx">
+      <DependentUpon>201711032204253_rushthings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711141537438_ayforpayment.resx">
+      <DependentUpon>201711141537438_ayforpayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711141551016_ayassessment.resx">
+      <DependentUpon>201711141551016_ayassessment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711150121104_duedates.resx">
+      <DependentUpon>201711150121104_duedates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711150134115_duedates2.resx">
+      <DependentUpon>201711150134115_duedates2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711161007256_duedatedesc.resx">
+      <DependentUpon>201711161007256_duedatedesc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711191106554_penalizedfee.resx">
+      <DependentUpon>201711191106554_penalizedfee.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
