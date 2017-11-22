@@ -49,16 +49,11 @@
             this.lblTodayIs = new System.Windows.Forms.Label();
             this.lblTransactionDate = new System.Windows.Forms.Label();
             this.grpTuition = new System.Windows.Forms.GroupBox();
-            this.txtRemainingTuitionBal = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtRemainingMiscBal = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtMiscAmountDue = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtTotalAmount = new System.Windows.Forms.TextBox();
+            this.txtTotalRemainingBal = new System.Windows.Forms.TextBox();
             this.lblTotalAmount = new System.Windows.Forms.Label();
-            this.txtTotalAmountBal = new System.Windows.Forms.TextBox();
+            this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbDownpayment = new System.Windows.Forms.CheckBox();
@@ -71,7 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbStudent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentPayments)).BeginInit();
             this.grpTuition.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -97,6 +91,7 @@
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(136, 20);
             this.txtAmount.TabIndex = 5;
+            this.txtAmount.TextChanged += new System.EventHandler(this.txtAmount_TextChanged);
             // 
             // txtStudentNo
             // 
@@ -222,6 +217,7 @@
             // 
             this.txtTuitionAmountDue.Location = new System.Drawing.Point(152, 19);
             this.txtTuitionAmountDue.Name = "txtTuitionAmountDue";
+            this.txtTuitionAmountDue.ReadOnly = true;
             this.txtTuitionAmountDue.Size = new System.Drawing.Size(136, 20);
             this.txtTuitionAmountDue.TabIndex = 23;
             this.txtTuitionAmountDue.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
@@ -229,11 +225,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 22);
+            this.label8.Location = new System.Drawing.Point(37, 22);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.Size = new System.Drawing.Size(101, 13);
             this.label8.TabIndex = 22;
-            this.label8.Text = "Amount Due";
+            this.label8.Text = "Tuition Amount Due";
             // 
             // lblTodayIs
             // 
@@ -255,105 +251,68 @@
             // 
             // grpTuition
             // 
-            this.grpTuition.Controls.Add(this.txtRemainingTuitionBal);
-            this.grpTuition.Controls.Add(this.label9);
+            this.grpTuition.Controls.Add(this.txtMiscAmountDue);
+            this.grpTuition.Controls.Add(this.label11);
             this.grpTuition.Controls.Add(this.txtTuitionAmountDue);
             this.grpTuition.Controls.Add(this.label8);
+            this.grpTuition.Controls.Add(this.txtTotalRemainingBal);
+            this.grpTuition.Controls.Add(this.lblTotalAmount);
+            this.grpTuition.Controls.Add(this.txtTotalAmount);
+            this.grpTuition.Controls.Add(this.label12);
             this.grpTuition.Location = new System.Drawing.Point(15, 253);
             this.grpTuition.Name = "grpTuition";
-            this.grpTuition.Size = new System.Drawing.Size(337, 113);
+            this.grpTuition.Size = new System.Drawing.Size(337, 197);
             this.grpTuition.TabIndex = 26;
             this.grpTuition.TabStop = false;
-            this.grpTuition.Text = "Tuition";
-            // 
-            // txtRemainingTuitionBal
-            // 
-            this.txtRemainingTuitionBal.Location = new System.Drawing.Point(152, 49);
-            this.txtRemainingTuitionBal.Name = "txtRemainingTuitionBal";
-            this.txtRemainingTuitionBal.Size = new System.Drawing.Size(136, 20);
-            this.txtRemainingTuitionBal.TabIndex = 25;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 52);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 13);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "Remaining Balance";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtRemainingMiscBal);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtMiscAmountDue);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Location = new System.Drawing.Point(15, 372);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(337, 113);
-            this.groupBox1.TabIndex = 27;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Misc";
-            // 
-            // txtRemainingMiscBal
-            // 
-            this.txtRemainingMiscBal.Location = new System.Drawing.Point(152, 49);
-            this.txtRemainingMiscBal.Name = "txtRemainingMiscBal";
-            this.txtRemainingMiscBal.Size = new System.Drawing.Size(136, 20);
-            this.txtRemainingMiscBal.TabIndex = 25;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 52);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(99, 13);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "Remaining Balance";
+            this.grpTuition.Text = "Fees";
+            this.grpTuition.Enter += new System.EventHandler(this.grpTuition_Enter);
             // 
             // txtMiscAmountDue
             // 
-            this.txtMiscAmountDue.Location = new System.Drawing.Point(152, 19);
+            this.txtMiscAmountDue.Location = new System.Drawing.Point(152, 57);
             this.txtMiscAmountDue.Name = "txtMiscAmountDue";
+            this.txtMiscAmountDue.ReadOnly = true;
             this.txtMiscAmountDue.Size = new System.Drawing.Size(136, 20);
             this.txtMiscAmountDue.TabIndex = 23;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 22);
+            this.label11.Location = new System.Drawing.Point(59, 64);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 13);
+            this.label11.Size = new System.Drawing.Size(52, 13);
             this.label11.TabIndex = 22;
-            this.label11.Text = "Amount Due";
+            this.label11.Text = "Misc Due";
             // 
-            // txtTotalAmount
+            // txtTotalRemainingBal
             // 
-            this.txtTotalAmount.Location = new System.Drawing.Point(167, 502);
-            this.txtTotalAmount.Name = "txtTotalAmount";
-            this.txtTotalAmount.Size = new System.Drawing.Size(136, 20);
-            this.txtTotalAmount.TabIndex = 29;
+            this.txtTotalRemainingBal.Location = new System.Drawing.Point(152, 135);
+            this.txtTotalRemainingBal.Name = "txtTotalRemainingBal";
+            this.txtTotalRemainingBal.Size = new System.Drawing.Size(136, 20);
+            this.txtTotalRemainingBal.TabIndex = 31;
+            this.txtTotalRemainingBal.TextChanged += new System.EventHandler(this.txtTotalRemainingBal_TextChanged);
             // 
             // lblTotalAmount
             // 
             this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(27, 508);
+            this.lblTotalAmount.Location = new System.Drawing.Point(45, 106);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(93, 13);
             this.lblTotalAmount.TabIndex = 28;
             this.lblTotalAmount.Text = "Total Amount Due";
             // 
-            // txtTotalAmountBal
+            // txtTotalAmount
             // 
-            this.txtTotalAmountBal.Location = new System.Drawing.Point(167, 541);
-            this.txtTotalAmountBal.Name = "txtTotalAmountBal";
-            this.txtTotalAmountBal.Size = new System.Drawing.Size(136, 20);
-            this.txtTotalAmountBal.TabIndex = 31;
+            this.txtTotalAmount.Location = new System.Drawing.Point(152, 99);
+            this.txtTotalAmount.Name = "txtTotalAmount";
+            this.txtTotalAmount.ReadOnly = true;
+            this.txtTotalAmount.Size = new System.Drawing.Size(136, 20);
+            this.txtTotalAmount.TabIndex = 29;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(27, 547);
+            this.label12.Location = new System.Drawing.Point(12, 141);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(126, 13);
             this.label12.TabIndex = 30;
@@ -442,11 +401,6 @@
             this.Controls.Add(this.cbTransferee);
             this.Controls.Add(this.cbDownpayment);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtTotalAmountBal);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.txtTotalAmount);
-            this.Controls.Add(this.lblTotalAmount);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpTuition);
             this.Controls.Add(this.lblTransactionDate);
             this.Controls.Add(this.lblTodayIs);
@@ -473,8 +427,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudentPayments)).EndInit();
             this.grpTuition.ResumeLayout(false);
             this.grpTuition.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -502,16 +454,11 @@
         private System.Windows.Forms.Label lblTodayIs;
         private System.Windows.Forms.Label lblTransactionDate;
         private System.Windows.Forms.GroupBox grpTuition;
-        private System.Windows.Forms.TextBox txtRemainingTuitionBal;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtRemainingMiscBal;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtMiscAmountDue;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtTotalAmount;
         private System.Windows.Forms.Label lblTotalAmount;
-        private System.Windows.Forms.TextBox txtTotalAmountBal;
+        private System.Windows.Forms.TextBox txtTotalRemainingBal;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox cbDownpayment;

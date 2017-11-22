@@ -75,6 +75,7 @@ namespace SVM_Suite
             var lstAssessment = _assessmentService.GetAssessment(Global.selectedStudent);
             txtMiscAmountDue.Text = lstAssessment.DeferredMisc.ToString();
             txtTuitionAmountDue.Text = lstAssessment.PaymentPerDue.ToString();
+            txtTotalAmount.Text = (Convert.ToDouble(txtMiscAmountDue.Text) + Convert.ToDouble(txtMiscAmountDue.Text)).ToString("#.##");
 
             //determine due dates
             lstDueDates = _dueDatesService.GetDueDates(lstAssessment.PaymentTerm);
@@ -88,10 +89,10 @@ namespace SVM_Suite
 
             if (lstPayments.Count >= 1)
             {
-                cbTransferee.Checked = assessmentDTO.isTransferree;
+               // cbTransferee.Checked = assessmentDTO.isTransferree;
                 //this is not downpayment
             }
-            else
+            else //if no payment given yet, 
             {
                 cbDownpayment.Checked = true;
 
@@ -101,19 +102,42 @@ namespace SVM_Suite
                 txtPenalty.Text = ((Convert.ToDouble(txtTuitionAmountDue.Text) / 100) * 3.5).ToString("#.##");
                 cbTransferee.Checked = false;
 
+
+               
             }
 
-            //early bird discount
-            TuitionDTO earlyBirdVal = lstDiscount.Where(x => x.DiscountTypeId ==3
-                              &&  Convert.ToDateTime(x.DiscountParam)<= DateTime.Now).
-                              OrderBy(x => x.DiscountVal).LastOrDefault();
+            //payment term annual or downpayment  and not late for anything (no penalty)                                                    
+            if ((lstAssessment.PaymentTerm == 1 || cbDownpayment.Checked == true) && penalizedFee == 0)
+            {
+                //early bird discount
+                TuitionDTO earlyBirdVal = lstDiscount.Where(x => x.DiscountTypeId == 3
+                                  && Convert.ToDateTime(x.DiscountParam) >= DateTime.Now).
+                                  OrderBy(x => x.DiscountVal).LastOrDefault();
 
-            txtEarlyBird.Text = (Convert.ToDouble(earlyBirdVal.DiscountVal) * 
-                (lstAssessment.OriginalAmount)).ToString("#.##");
+                txtEarlyBird.Text = (Convert.ToDouble(earlyBirdVal.DiscountVal) *
+                    (lstAssessment.OriginalAmount)/100).ToString("#.##");
 
-            lblEarlyBird.Text = "Early Bird for " + Convert.ToDateTime(earlyBirdVal.DiscountParam).ToShortDateString()
-             +  " ,"  + (earlyBirdVal.DiscountVal) + "%";
+                lblEarlyBird.Visible = true;
+                lblEarlyBird.Text = "Early Bird for " + Convert.ToDateTime(earlyBirdVal.DiscountParam).ToShortDateString()
+                 + " ," + (earlyBirdVal.DiscountVal) + "%";
 
+
+                txtTotalAmount.Text = (Convert.ToDouble(txtPenalty.Text) + Convert.ToDouble(txtTotalAmount.Text)
+                                      - Convert.ToDouble(txtEarlyBird.Text)).ToString("#.##");
+
+
+            }
+            else
+            {
+                lblEarlyBird.Visible = false;
+                txtTotalAmount.Text = (Convert.ToDouble(txtPenalty.Text) + Convert.ToDouble(txtTotalAmount.Text) + Convert.ToDouble(txtMiscAmountDue.Text)).ToString("#.##");
+
+
+            }
+            //txtTotalAmountBal.Text = (lstAssessment.FullAmount - (Convert.ToDouble(txtAmount.Text))).ToString("#.##"); 
+
+
+            txtTotalRemainingBal.Text = (lstAssessment.FullAmount).ToString("#.##");
             PaymentsDTO lastPayment = lstPayments.LastOrDefault();
 
             //txtRemainingMiscBal.Text =Convert.ToDouble(txtMiscAmountDue.Text) - lastPayment.
@@ -168,6 +192,7 @@ namespace SVM_Suite
 
 
 
+          
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -183,6 +208,9 @@ namespace SVM_Suite
             _paymentService.SavePayment(Global.selectedId, Convert.ToDecimal(txtAmount.Text),
                 Convert.ToInt32(cmbModeOfPayment.SelectedValue), Convert.ToInt32(txtChequeNo.Text),
                  cbDownpayment.Checked,  cbPromisory.Checked);
+
+            MessageBox.Show("Payment Saved");
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -267,6 +295,26 @@ namespace SVM_Suite
 
         private void cmbScholarship_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void grpTuition_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAmount_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtAmount.Text))
+            {
+                txtTotalRemainingBal.Text = (Convert.ToDouble(txtTotalRemainingBal.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#.##");
+            }
+        }
+
+        private void txtTotalRemainingBal_TextChanged(object sender, EventArgs e)
+        {
+
+           
 
         }
     }
